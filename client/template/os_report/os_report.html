@@ -1,0 +1,45 @@
+<template name="osReport">
+    {{#autoForm schema="Schema.OsReport" id="osReport"}}
+        <fieldset>
+            {{> afQuickField name='dateFrom'}}
+            {{> afQuickField name='dateTo'}}
+        </fieldset>
+        <button type="submit" class="btn btn-success">Veiw Report</button>
+    {{/autoForm}}
+</template>
+
+<!--os Report Generator-->
+<template name="osReportGen">
+    <div style="width: 720px; margin: auto">
+        <img src="os banner.jpg" style="margin-top: 20px; width: 720px; height: 100px;">
+        Report Data: {{data.header.repDate}}
+        <table width="100%" class="table table-bordered">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Payment ID</th>
+                <th>Paid Date</th>
+                <th>Stu Name</th>
+                <th>Sub Name</th>
+                <th>Due Amount</th>
+                <th>Paid Amount</th>
+                <th>OS Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each data.content}}
+                <tr>
+                    <td align="center">{{no @index}}</td>
+                    <td align="center">{{_id}}</td>
+                    <td>{{moFormat paidDate "MMM/DD/YYYY"}}</td>
+                    <td align="center">{{_student.name}}</td>
+                    <td align="center">{{_register._id}}</td>
+                    <td align="center">$ {{dueAmount}}</td>
+                    <td align="center">$ {{paidAmount}}</td>
+                    <td align="center">$ {{osAmount}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

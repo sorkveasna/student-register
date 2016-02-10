@@ -1,0 +1,45 @@
+<template name="registerReport">
+    {{#autoForm schema="Schema.RegisterReport" id="registerReport"}}
+        <fieldset>
+            {{> afQuickField name='dateFrom'}}
+            {{> afQuickField name='dateTo'}}
+        </fieldset>
+        <button type="submit" class="btn btn-success">Veiw Report</button>
+    {{/autoForm}}
+</template>
+
+<!--register Report Generator-->
+<template name="registerReportGen">
+    <div style="width: 720px; margin: auto">
+        <img src="register banner.jpg" style="margin-top: 20px; width: 720px; height: 100px;">
+        Report Data: {{data.header.repDate}}
+        <table width="100%" class="table table-bordered">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Reg ID</th>
+                <th>Reg Date</th>
+                <th>Stu_Name</th>
+                <th>Sub_Name</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each data.content}}
+                <tr>
+                    <td>{{no @index}}</td>
+                    <td>{{_id}}</td>
+                    <td>{{moFormat regDate "MMM/DD/YYYY"}}</td>
+                    <td align="center">{{_student.name}}</td>
+                    <td align="center">{{_subject.name}}</td>
+                    <td align="right">$ {{price}}</td>
+                    <td align="right">$ {{discount}}</td>
+                    <td align="right">$ {{amount}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
