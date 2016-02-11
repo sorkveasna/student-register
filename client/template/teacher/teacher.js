@@ -30,6 +30,16 @@ Template.teacherAction.events({
     }
 });
 
+////Update
+//Template.teacherUpdate.onCreated(function(){
+//    let teacherId= FlowRouter.getParam("id");
+//    //let selector={_id: subjectId}; //dynamic
+//    //console.log(subjectId);
+//    //let selector={}; //find all
+//
+//    this.subscribe("teacherById", teacherId);
+//});
+
 Template.teacherUpdate.helpers({
     teacherDoc(){
         let teacherId = FlowRouter.getParam("id");

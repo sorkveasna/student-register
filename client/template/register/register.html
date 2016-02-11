@@ -35,30 +35,34 @@
 
 <!--Update-->
 <template name="registerUpdate">
-    <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Register Update</legend>
-    <p>
-        <a href="{{pathFor 'register'}}" class="btn btn-primary">Back</a>
-    </p>
-    {{#autoForm collection="Collection.Register" doc=registerDoc id="registerUpdate" type="update"}}
-        <fieldset>
-            {{> afQuickField name='regDate'}}
-            {{> afQuickField name='studyDay'}}
-            {{> afQuickField name='subjectId'}}
-            {{> afQuickField name='studentId'}}
-            {{> afQuickField name='price'}}
-            {{> afQuickField name='discount'}}
-            {{> afQuickField name='amount'}}
-            {{> afQuickField name='teacherId'}}
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Update</button>
-    {{/autoForm}}
+    {{#if Template.subscriptionsReady}}
+        <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Register Update</legend>
+        <p>
+            <a href="{{pathFor 'register'}}" class="btn btn-primary">Back</a>
+        </p>
+        {{#autoForm collection="Collection.Register" doc=registerDoc id="registerUpdate" type="update"}}
+            <fieldset>
+                {{> afQuickField name='regDate'}}
+                {{> afQuickField name='studyDay'}}
+                {{> afQuickField name='subjectId'}}
+                {{> afQuickField name='studentId'}}
+                {{> afQuickField name='price'}}
+                {{> afQuickField name='discount'}}
+                {{> afQuickField name='amount'}}
+                {{> afQuickField name='teacherId'}}
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Update</button>
+        {{/autoForm}}
+    {{else}}
+        {{>spinner}}
+    {{/if}}
 </template>
 
 
 <!--Action-->
 <template name="registerAction">
     <div class="btn-group" data-toggle="buttons-radio">
-    <button class="jsUpdate fa fa-edit btn btn-primary"></button>
-    <button class="jsRemove fa fa-trash btn btn-danger"></button>
+        <button class="jsUpdate fa fa-edit btn btn-primary"></button>
+        <button class="jsRemove fa fa-trash btn btn-danger"></button>
     </div>
 </template>

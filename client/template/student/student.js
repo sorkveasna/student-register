@@ -1,6 +1,7 @@
 //Action
 Template.studentAction.events({
     'click .jsUpdate': function () {
+        debugger
         FlowRouter.go('studentUpdate', {id: this._id});// url??
     },
 
@@ -29,6 +30,16 @@ Template.studentAction.events({
         });
     }
 });
+
+////Update
+//Template.studentUpdate.onCreated(function(){
+//    let studentId= FlowRouter.getParam("id");
+//    //let selector={_id: subjectId}; //dynamic
+//    //console.log(subjectId);
+//    //let selector={}; //find all
+//
+//    this.subscribe("studentById", studentId);
+//});
 
 Template.studentUpdate.helpers({
     studentDoc(){

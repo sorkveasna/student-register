@@ -40,8 +40,8 @@ Schema.Payment = new SimpleSchema({
             type: "select",
             options: function () {
                 var studentId = AutoForm.getFieldValue('studentId');
-                console.log(studentId);
-
+                Meteor.subscribe('register',{studentId: studentId});
+                //console.log(studentId);
                 var data = Collection.Register.find({studentId: studentId});
                 var list = [{label: '(Select One)', value: ''}];
 

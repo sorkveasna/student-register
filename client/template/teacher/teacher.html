@@ -28,26 +28,31 @@
 
 <!--Update-->
 <template name="teacherUpdate">
-    <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Teacher Update</legend>
-    <p>
-        <a href="{{pathFor 'teacher'}}" class="btn btn-primary">Back</a>
-    </p>
-    <!--{{> quickForm collection="Collection.Teacher"  id="teacherUpdate" type="update"}}-->
-    {{#autoForm collection="Collection.Teacher" doc=teacherDoc id="teacherUpdate" type="update"}}
-        <fieldset>
-            {{> afQuickField name='name'}}
-            {{> afQuickField name='gender'}}
-            {{> afQuickField name='datebirth'}}
-            {{> afQuickField name='telephone'}}
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Update</button>
-    {{/autoForm}}
+    {{#if Template.subscriptionsReady}}
+        <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Teacher Update</legend>
+        <p>
+            <a href="{{pathFor 'teacher'}}" class="btn btn-primary">Back</a>
+        </p>
+        <!--{{> quickForm collection="Collection.Teacher"  id="teacherUpdate" type="update"}}-->
+        {{#autoForm collection="Collection.Teacher" doc=teacherDoc id="teacherUpdate" type="update"}}
+            <fieldset>
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='gender'}}
+                {{> afQuickField name='datebirth'}}
+                {{> afQuickField name='telephone'}}
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Update</button>
+        {{/autoForm}}
+    {{else}}
+        {{>spinner}}
+    {{/if}}
 </template>
 
 <!--Action-->
 <template name="teacherAction">
     <div class="btn-group" data-toggle="buttons-radio">
-        <button name="iconcolor" type="button" class="jsUpdate btn btn-primary btn-size" value="icon-white">Update</button>
+        <button name="iconcolor" type="button" class="jsUpdate btn btn-primary btn-size" value="icon-white">Update
+        </button>
         <button name="iconcolor" type="button" class="jsRemove btn btn-danger active btn-size">Remove</button>
     </div>
 </template>

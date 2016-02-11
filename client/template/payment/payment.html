@@ -10,7 +10,8 @@
 </template>
 
 <template name="paymentInsert">
-    <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Add New Payment</legend>
+{{#if Template.subscriptionsReady}}
+        <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Add New Payment</legend>
     <p>
         <a href="{{pathFor 'payment'}}" class="btn btn-primary">Back</a>
     </p>
@@ -30,37 +31,43 @@
         </fieldset>
         <button type="submit" class="btn btn-primary">Insert</button>
     {{/autoForm}}
+    {{/if}}
 </template>
 
 <!--Update-->
 <template name="paymentUpdate">
-    <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Payment Update</legend>
-    <p>
-        <a href="{{pathFor 'payment'}}" class="btn btn-primary">Back</a>
-    </p>
-    {{#autoForm collection="Collection.Payment" doc=paymentDoc id="paymentUpdate" type="update"}}
-        <fieldset>
-            <div class="row">
-                <div class="col-sm-6">{{> afQuickField name='paidDate'}}</div>
-                <div class="col-sm-6">{{> afQuickField name='paidAmount'}}</div>
-                <div class="col-sm-6">{{> afQuickField name='studentId'}}</div>
-                <div class="col-sm-6">{{> afQuickField name='osAmount'}}</div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">{{> afQuickField name='registerId'}}</div>
-                <div class="col-sm-6">{{> afQuickField name='voucherId'}}</div>
-                <div class="col-sm-6">{{> afQuickField name='dueAmount'}}</div>
-            </div>
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Update</button>
-    {{/autoForm}}
+    {{#if Template.subscriptionsReady}}
+        <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Payment Update</legend>
+        <p>
+            <a href="{{pathFor 'payment'}}" class="btn btn-primary">Back</a>
+        </p>
+        {{#autoForm collection="Collection.Payment" doc=paymentDoc id="paymentUpdate" type="update"}}
+            <fieldset>
+                <div class="row">
+                    <div class="col-sm-6">{{> afQuickField name='paidDate'}}</div>
+                    <div class="col-sm-6">{{> afQuickField name='paidAmount'}}</div>
+                    <div class="col-sm-6">{{> afQuickField name='studentId'}}</div>
+                    <div class="col-sm-6">{{> afQuickField name='osAmount'}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">{{> afQuickField name='registerId'}}</div>
+                    <div class="col-sm-6">{{> afQuickField name='voucherId'}}</div>
+                    <div class="col-sm-6">{{> afQuickField name='dueAmount'}}</div>
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Update</button>
+        {{/autoForm}}
+    {{else}}
+        {{>spinner}}
+    {{/if}}
 </template>
 
 
 <!--Action-->
 <template name="paymentAction">
     <div class="btn-group" data-toggle="buttons-radio">
-        <button name="iconcolor" type="button" class="jsUpdate btn btn-primary btn-size" value="icon-white">Update</button>
+        <button name="iconcolor" type="button" class="jsUpdate btn btn-primary btn-size" value="icon-white">Update
+        </button>
         <button name="iconcolor" type="button" class="jsRemove btn btn-danger active btn-size">Remove</button>
     </div>
 </template>

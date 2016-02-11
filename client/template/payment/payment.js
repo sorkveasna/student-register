@@ -19,7 +19,6 @@ Template.paymentAction.events({
     }
 });
 
-
 AutoForm.hooks({
     paymentInsert: { //id autoform
         before: {
@@ -36,6 +35,7 @@ AutoForm.hooks({
             alertify.error(error.message);
         }
     },
+
     paymentUpdate: { //id autoform
         before: {
             insert: function (doc) {
@@ -53,10 +53,19 @@ AutoForm.hooks({
     }
 });
 
+////Update
+//Template.paymentUpdate.onCreated(function () {
+//    let paymentId = FlowRouter.getParam("id");
+//    //let selector={_id: subjectId}; //dynamic
+//    //console.log(subjectId);
+//    //let selector={}; //find all
+//    this.subscribe("paymentById", paymentId);
+//});
+
 Template.paymentUpdate.helpers({
     paymentDoc(){
         let paymentId = FlowRouter.getParam("id");
-        let payment = Collection.payment.findOne(paymentId); //{}
+        let payment = Collection.Payment.findOne(paymentId); //{}
         return payment;
     }
 });

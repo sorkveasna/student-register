@@ -53,6 +53,16 @@ AutoForm.hooks({
     }
 });
 
+////Update
+//Template.subjectUpdate.onCreated(function(){
+//    let subjectId= FlowRouter.getParam("id");
+//    //let selector={_id: subjectId}; //dynamic
+//    //console.log(subjectId);
+//    //let selector={}; //find all
+//
+//    this.subscribe("subjectById", subjectId);
+//});
+
 Template.subjectUpdate.helpers({
     subjectDoc(){
         let subjectId = FlowRouter.getParam("id");

@@ -27,26 +27,31 @@
 
 <!--Update-->
 <template name="subjectUpdate">
-    <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Subject Update</legend>
-    <p>
-        <a href="{{pathFor 'subject'}}" class="btn btn-primary">Back</a>
-    </p>
-    {{#autoForm collection="Collection.Subject" doc=subjectDoc id="subjectUpdate" type="update"}}
-        <fieldset>
-            {{> afQuickField name='subject'}}
-            {{> afQuickField name='duration'}}
-            {{> afQuickField name='price'}}
-            {{> afQuickField name='des'}}
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Update</button>
-    {{/autoForm}}
+    {{#if Template.subscriptionsReady}}
+        <legend style="font-size: 28px; font-weight: bold; font-family: Times New Roman">Subject Update</legend>
+        <p>
+            <a href="{{pathFor 'subject'}}" class="btn btn-primary">Back</a>
+        </p>
+        {{#autoForm collection="Collection.Subject" doc=subjectDoc id="subjectUpdate" type="update"}}
+            <fieldset>
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='duration'}}
+                {{> afQuickField name='price'}}
+                {{> afQuickField name='des'}}
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Update</button>
+        {{/autoForm}}
+    {{else}}
+        {{>spinner}}
+    {{/if}}
 </template>
 
 
 <!--Action-->
 <template name="subjectAction">
     <div class="btn-group" data-toggle="buttons-radio">
-        <button name="iconcolor" type="button" class="jsUpdate btn btn-primary btn-size" value="icon-white">Update</button>
+        <button name="iconcolor" type="button" class="jsUpdate btn btn-primary btn-size" value="icon-white">Update
+        </button>
         <button name="iconcolor" type="button" class="jsRemove btn btn-danger active btn-size">Remove</button>
     </div>
 </template>
